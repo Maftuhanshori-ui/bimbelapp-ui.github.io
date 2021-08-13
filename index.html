@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+    <title>E-Learning</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Laporan</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container mt-5">
+        <form>
+            <div class="form-group">
+                <!-- Label 1! -->
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nama Coach </label>
+                            <select class="form-select" aria-label="Default select example" id="slct1" name="slct1"
+                                onchange="populate(this.id,'slct2')">
+                                <option selected>Pilih</option>
+                                <option value="coach_adit">ADITHIA AMIDJAYA</option>
+                                <option value="coach_ika">IKA PARAMITA</option>
+                                <option value="coach_rahmad">RAHMADSYAH</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput2" class="form-label">Nama Peserta </label>
+                            <select class="form-select" aria-label="Default select example" id="slct2" name="slct2" n>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Umur</label>
+                            <input type="number" class="form-control" id="umur">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nilai Teori</label>
+                            <input type="Number" class="form-control" id="nt">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nilai Praktek</label>
+                            <input type="Number" class="form-control" id="np">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="customRange2" class="form-label">Komunikasi dan Respon</label>
+                            <input type="range" class="form-range" min="0" max="5" id="komunikasi">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customRange2" class="form-label">Kehadiran</label>
+                            <input type="range" class="form-range" min="0" max="5" id="kehadiran">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customRange2" class="form-label">Effort Proses Coaching</label>
+                            <input type="range" class="form-range" min="0" max="5" id="effort">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customRange2" class="form-label">Komitment melakukan Action Plan</label>
+                            <input type="range" class="form-range" min="0" max="5" id="komitment">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="deskripsi" rows="3"></textarea>
+                </div>
+                <input type="button" value="Simpan" class="btn btn-primary" onclick="x()">
+                <input type="reset" value="Reset" class="btn btn-primary">
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="exampleFormControlInput1" class="form-label">Rata - rata</label>
+                    <input type="text" class="form-control" id="nr">
+                </div>
+                <div class="col-md-3">
+                    <label for="exampleFormControlInput1" class="form-label">Hasil</label>
+                    <input type="text" class="form-control" id="nh">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        function populate(s1, s2) {
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+            s2.innerHTML = "";
+            if (s1.value == "coach_adit") {
+                var optionArray = ["aggy restu pribadi|AGGY RESTU PRIBADI", "fajri ardi|FAJRI ARDI", "kendian fetriko|KENDIAN FETRIKO"];
+            } else if (s1.value == "coach_ika") {
+                var optionArray = ["rusli ware|RUSLI WARE", "septa pudiawan|SEPTA PUDIAWAN", "m ryan fadhli|M RYAN FADHLI"];
+            } else if (s1.value == "coach_rahmad") {
+                var optionArray = ["arthur edgar wijaya|ARTHUR EDGAR WIJAYA", "fekky irawan|FEKKY IRAWAN", "julianto|JULIANTO"];
+            }
+            for (var option in optionArray) {
+                var pair = optionArray[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                s2.options.add(newOption);
+            }
+        }
+
+        function x() {
+            var nt, np, hasil; //nt=nilai teori, np=nilai praktek
+            nt = document.forms[0].nt.value;
+            np = document.forms[0].np.value;
+            hasil = (nt * 1 + np * 1) / 2 //hasil=rumus rata2. Kenapa nt,np harus di kali 1 karena jika tidak javascript akan menganggap bahwa inputan nt,np adalah jadi 1 ( string)
+            document.forms[0].nr.value = hasil;
+            if (hasil <= 20)
+                ket = "Tidak lulus";
+            else if (hasil <= 35)
+                ket = "Butuh pendamping";
+            else if (hasil >= 40)
+                ket = "Lulus";
+            else
+                ket = "Input Salah";
+            document.forms[0].nh.value = ket;
+        }
+    </script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
